@@ -562,7 +562,7 @@ section {
 
 .robot-3d {
   position: absolute;
-  top: 0;
+  top: 6%;
   right: -15%;
   z-index: 11;
 }
