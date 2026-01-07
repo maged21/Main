@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link
+      rel="preload"
+      href="https://unpkg.com/lenis@1.3.14/dist/lenis.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/lenis@1.3.14/dist/lenis.css"
+      />
+    </noscript>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@200..700&display=swap"
+    />
+    <title>About | Maged Abdulaziz</title>
+    <meta
+      name="description"
+      content="Learn about Maged Abdulaziz, a creative frontend developer focused on motion, interaction, and modern web experiences."
+    />
+    <meta name="author" content="Maged Abdulaziz" />
+    <link
+      rel="canonical"
+      href="https://www.magedabdulaziz.com/pages/about-page.html"
+    />
+    <meta property="og:title" content="About | Maged Abdulaziz" />
+    <meta
+      property="og:description"
+      content="A closer look at Maged Abdulaziz's approach to frontend development, motion, and interactive web design."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://www.magedabdulaziz.com/pages/about-page.html"
+    />
+    <meta
+      property="og:image"
+      content="https://www.magedabdulaziz.com/images/me/standing-three.jpeg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="About | Maged Abdulaziz" />
+    <meta
+      name="twitter:description"
+      content="A closer look at Maged Abdulaziz's approach to frontend development, motion, and interactive web design."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.magedabdulaziz.com/images/me/standing-three.jpeg"
+    />
+  </head>
+  <body data-page="about" class="about-page">
+    <div id="app">
+      <nav>
+        <div class="menu-bar">
+          <a
+            href="/index.html"
+            class="nav-logo"
+            id="logo"
+            aria-label="Maged Abdulaziz home"
+            >MAGED</a
+          >
+
+          <div class="menu-toggle-btn">
+            <div class="menu-toggle-label">
+              <p>Menu</p>
+            </div>
+            <div class="menu-hamburger-icon">
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <div class="menu-overlay">
+          <div class="menu-overlay-content">
+            <div class="menu-media-wrapper">
+              <!-- <img src="/images/hero4.jpg" /> -->
+              <video src="/videos/nav-video.mp4" autoplay muted loop></video>
+            </div>
+            <div class="menu-content-wrapper">
+              <div class="menu-content-main">
+                <div class="menu-col">
+                  <div class="menu-link"><a href="/index.html">Home</a></div>
+                  <div class="menu-link">
+                    <a href="/pages/about-page.html">About</a>
+                  </div>
+                  <div class="menu-link">
+                    <a href="/pages/project-page.html">Projects</a>
+                  </div>
+                  <div class="menu-link">
+                    <a href="/pages/contact-us.html">Contact Me</a>
+                  </div>
+                </div>
+                <div class="menu-col">
+                  <div class="menu-tag"><a href="#">Web Animations</a></div>
+                  <div class="menu-tag">
+                    <a href="#">Interactive Media</a>
+                  </div>
+                  <div class="menu-tag"><a href="#">Motion Craft</a></div>
+                </div>
+              </div>
+              <div class="menu-footer">
+                <div class="menu-col"><p>Cairo, Egypt</p></div>
+                <div class="menu-col">
+                  <p>+20 111 374 3883</p>
+                  <p>maged.abdulaziz9@gmail.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <main id="page-content">
+        <canvas id="fluid"></canvas>
+        <div class="scroll-progress" aria-hidden="true">
+          <div class="scroll-progress-inner">
+            <span class="scroll-progress-value">0%</span>
+          </div>
+        </div>
+
+        <section class="about-hero">
+          <h1>I believe websites should feel alive.</h1>
+
+          <span class="scroll-down" aria-label="Scroll down">
+            <div class="mouse"><span></span></div>
+            <div class="arrow"><span></span><span></span></div>
+          </span>
+
+          <div class="hero-copy">
+            <p>Scroll to continue</p>
+          </div>
+        </section>
+
+        <div class="video-section">
+          <div class="video-container-desktop">
+            <div class="video-preview">
+              <div class="video-wrapper">
+                <button
+                  class="video-trigger"
+                  type="button"
+                  aria-label="Watch video"
+                >
+                  <span>Watch video</span>
+                </button>
+                <iframe
+                  class="video-embed"
+                  src="https://player.vimeo.com/video/1151093846?background=1&amp;autopause=0&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0"
+                  frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  title="about-vid"
+                ></iframe>
+              </div>
+            </div>
+            <div class="video-title">
+              <p>About Me</p>
+              <p>2024 - 2025</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-container-mobile">
+          <div class="video-preview">
+            <div class="video-wrapper">
+              <button
+                class="video-trigger"
+                type="button"
+                aria-label="Watch video"
+              >
+                <span>Watch video</span>
+              </button>
+              <iframe
+                class="video-embed"
+                src="https://player.vimeo.com/video/1151093846?background=1&amp;autopause=0&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;controls=0&amp;title=0&amp;byline=0&amp;portrait=0"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                title="about-vid"
+              ></iframe>
+            </div>
+          </div>
+          <div class="video-title">
+            <p>About Me</p>
+            <p>2024 - 2025</p>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <h1 class="animate-text">
+            My work mixes clean structure, dark visuals, and motion-driven
+            interfaces to create experiences that pull people in.
+          </h1>
+        </div>
+
+        <section class="about-page services">
+          <div class="services-header"><img src="/images/whoiam.svg" /></div>
+          <div class="services-header"><img src="/images/whoiam.svg" /></div>
+          <div class="services-header"><img src="/images/whoiam.svg" /></div>
+        </section>
+
+        <section class="services-copy">
+          <h1 class="animate-text">
+            I'm Maged — a frontend developer who loves turning static layouts
+            into fast, animated experiences. I work with JavaScript, GSAP,
+            Webflow, and Shopify to build websites that combine clean structure
+            with smooth motion.
+          </h1>
+        </section>
+
+        <section class="experience-section">
+          <h2 class="exp-title reveal-fog">EXPERIENCE</h2>
+
+          <div class="exp-content">
+            <div class="exp-item-title">
+              <h3>Reflection Digital Agency</h3>
+            </div>
+            <div class="exp-item">
+              <div class="exp-left">
+                <p class="exp-sub">2023 — Present</p>
+              </div>
+
+              <div class="exp-meta exp-center">
+                <div>
+                  <span class="meta-label">Postion</span>Frontend Developer
+                </div>
+                <div><span class="meta-label">Location</span>Cairo, Egypt</div>
+                <div>
+                  <span class="meta-label">Industry</span>Digital Agency
+                </div>
+                <div>
+                  <span class="meta-label">Website</span>
+                  <a href="https://www.reflections-ibs.com/" target="_blank"
+                    >www.reflections-ibs.com ↗</a
+                  >
+                </div>
+              </div>
+
+              <div class="exp-right">
+                <p>
+                  Worked on designing and developing modern websites and web
+                  applications across different platforms, with a strong focus
+                  on structure, responsiveness, and user experience, <br />
+                  I contributed to building clean, scalable frontends and
+                  translating design systems into functional, accessible
+                  interfaces.
+                </p>
+                <ul>
+                  <li>• Responsive web development</li>
+                  <li>• UI implementation & layout systems</li>
+                  <li>• CMS-based projects (Umbraco)</li>
+                  <li>• Frontend for cross-platform apps (MAUI / XAML)</li>
+                  <li>• Shopify support and light customization</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="exp-content">
+            <div class="exp-item-title">
+              <h3>Aziz Co Agency</h3>
+            </div>
+            <div class="exp-item">
+              <div class="exp-left">
+                <p class="exp-sub">2023 — 2024</p>
+              </div>
+
+              <div class="exp-meta exp-center">
+                <div>
+                  <span class="meta-label">Postion</span>Freelance Shopify
+                  Developer
+                </div>
+                <div><span class="meta-label">Location</span>Egypt</div>
+                <div><span class="meta-label">Industry</span>Agency</div>
+              </div>
+
+              <div class="exp-right">
+                <p>
+                  Worked as a freelance frontend developer, building and
+                  maintaining e-commerce websites using Shopify.
+                </p>
+                <p>
+                  Collaborated directly with clients to understand requirements,
+                  improve user experience, and implement design enhancements
+                  while keeping performance and clarity in mind.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="exp-content">
+            <div class="exp-item-title">
+              <h3>Arlation Company</h3>
+            </div>
+            <div class="exp-item">
+              <div class="exp-left">
+                <p class="exp-sub">2023 — Present</p>
+              </div>
+
+              <div class="exp-meta exp-center">
+                <div>
+                  <span class="meta-label">Postion</span>Freelance Web Developer
+                </div>
+                <div><span class="meta-label">Location</span>Dokki, Egypt</div>
+                <div>
+                  <span class="meta-label">Industry</span>Game Localization
+                </div>
+                <div>
+                  <span class="meta-label">Website</span>
+                  <a href="https://www.arlation.com" target="_blank"
+                    >www.arlation.com ↗</a
+                  >
+                </div>
+              </div>
+
+              <div class="exp-right">
+                <p>
+                  As a member of the Frontend Foundations team working on the
+                  Online Bank, I develop customer-facing features and integrate
+                  the design system to ensure a seamless and accessible user
+                  experience.
+                </p>
+                <p>
+                  Starling Bank is an award-winning, digital challenger bank
+                  disrupting the financial services industry with its
+                  transparent and customer-focused approach to banking.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="exp-content">
+            <div class="exp-item-title">
+              <h3>Paradise Solutions</h3>
+            </div>
+            <div class="exp-item">
+              <div class="exp-left">
+                <p class="exp-sub">2022 - 2023</p>
+              </div>
+
+              <div class="exp-meta exp-center">
+                <div>
+                  <span class="meta-label">Postion</span>Frontend Developer
+                </div>
+                <div><span class="meta-label">Location</span>Cairo, Egypt</div>
+                <div>
+                  <span class="meta-label">Industry</span>Software House
+                </div>
+                <div>
+                  <span class="meta-label">Website</span>
+                  <a href="https://paradise-solutions.com/" target="_blank"
+                    >www.paradise-solutions.com ↗</a
+                  >
+                </div>
+              </div>
+
+              <div class="exp-right">
+                <p>
+                  Contributed to building frontend components for multiple web
+                  applications, working closely with designers to deliver
+                  responsive and visually consistent interfaces.
+                </p>
+                <p>
+                  Focused on clean HTML and CSS structures to create smooth,
+                  accessible user experiences.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="tools-section">
+          <div class="exp-title">
+            <h2>Tools Section</h2>
+            <p>A selection of tools I use regularly in my workflow.</p>
+          </div>
+
+          <div class="grid">
+            <div class="grid-row">
+              <div class="grid-item"><p>( html )</p></div>
+              <div class="grid-item"><p>( css )</p></div>
+              <div class="grid-item"><p>( javascript )</p></div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-item"><p>( gsap )</p></div>
+              <div class="grid-item"><p>( scrolltrigger )</p></div>
+              <div class="grid-item"><p>( react )</p></div>
+              <div class="grid-item"><p>( next.js )</p></div>
+              <div class="grid-item"><p>( three.js )</p></div>
+            </div>
+          </div>
+          <div class="highlight"></div>
+        </section>
+
+        <section class="process-section">
+          <div class="process-bg">
+            <span class="bg-text">GET IN TOUCH</span>
+            <span class="bg-text">DIRECTION & SCOPE</span>
+            <span class="bg-text">BUILD & MOTION</span>
+            <span class="bg-text">REVIEW & LAUNCH</span>
+          </div>
+
+          <div class="process-content">
+            <h2 class="section-title">From idea to execution</h2>
+
+            <div class="process-item left" data-bg="0">
+              <h3>1. GET IN TOUCH</h3>
+              <p>
+                Everything starts with a simple message. You don’t need a full
+                brief or perfect idea — just a rough direction, a reference, or
+                a problem you’re trying to solve, <br />
+                I ask the right questions early to understand your goals, your
+                audience, and what kind of experience you want the website to
+                deliver.
+              </p>
+            </div>
+
+            <div class="process-item right" data-bg="1">
+              <h3>2. DIRECTION & SCOPE</h3>
+              <p>
+                Before writing code, I define the direction clearly. This
+                includes page structure, core sections, interaction level, and
+                overall tone, <br />
+                We align on scope, priorities, and timeline to avoid surprises
+                later. This step keeps the project focused and prevents
+                unnecessary complexity.
+              </p>
+            </div>
+
+            <div class="process-item left" data-bg="2">
+              <h3>3. BUILD & MOTION</h3>
+              <p>
+                This is where the website takes shape. I start with a clean
+                structure, then layer in interactions and motion gradually,
+                <br />
+                Animations are added with purpose — to guide attention, improve
+                flow, and make the experience feel alive without hurting
+                performance. <br />
+                Progress is shared step by step, so you always know what’s
+                happening.
+              </p>
+            </div>
+
+            <div class="process-item right" data-bg="3">
+              <h3>4. REVIEW & LAUNCH</h3>
+              <p>
+                Once everything is built, I focus on refinement. Small
+                adjustments, performance checks, responsiveness, and final
+                polish. <br />
+                After approval, the project is deployed and ready to go live. I
+                make sure everything works smoothly across devices and
+                environments, <br />
+                Support after launch is available if needed.
+              </p>
+            </div>
+          </div>
+        </section>
+        <div class="about-content">
+          <h1 class="animate-text">
+            Outside the editor, I'm usually training, flipping, filming small
+            visuals, or learning something new. Movement has always been a big
+            part of my life — and I think that energy shows up in the websites I
+            build.
+          </h1>
+        </div>
+
+        <section class="experience-section beyond-experience">
+          <div class="exp-bg">
+            <!-- <video
+              class="exp-bg-video"
+              src="/videos/backflip.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+            ></video> -->
+            <div class="exp-bg-overlay"></div>
+          </div>
+          <h2 class="exp-title exp-title--beyond reveal-fog">
+            BEYOND DEVELOPMENT
+          </h2>
+
+          <div class="exp-content">
+            <div class="exp-item-title">
+              <h3>» Gravity Code</h3>
+            </div>
+            <div class="exp-item">
+              <div class="exp-left">
+                <p class="exp-sub">2019 - 2021</p>
+              </div>
+              <div class="exp-right">
+                <p>
+                  Worked as a trampoline coach, focusing on movement, control,
+                  and progression. This experience shaped how I understand
+                  timing, rhythm, and physical motion — concepts that later
+                  influenced my approach to animation and interaction design.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="exp-content">
+            <div class="exp-item-title">
+              <h3>» Fly — Trampoline Park</h3>
+            </div>
+            <div class="exp-item">
+              <div class="exp-left">
+                <p class="exp-sub">2021 — 2022</p>
+              </div>
+
+              <div class="exp-right">
+                <p>
+                  Part of a professional trampoline environment, working with
+                  movement-based training and physical coordination. This period
+                  strengthened my discipline, focus, and awareness of motion.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="exp-content">
+            <div class="exp-item-title">
+              <h3>» Blue2 Academy — Parkour Coach</h3>
+            </div>
+            <div class="exp-item">
+              <div class="exp-left">
+                <p class="exp-sub">2025</p>
+              </div>
+
+              <div class="exp-right">
+                <p>
+                  Worked as a parkour coach, teaching movement, balance, and
+                  spatial awareness. Parkour shaped how I think about flow,
+                  transitions, and controlled risk — ideas that naturally carry
+                  into how I build interactive experiences.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="timeline-cards">
+          <div class="timeline-cards-header">
+            <h1>Time stretches differently inside this frame.</h1>
+          </div>
+
+          <div class="timeline-cards-images">
+            <div class="timeline-cards-img">
+              <img
+                src="/images/me/photo1.jpeg"
+                alt="maged abdulaziz ai"
+                loading="lazy"
+              />
+            </div>
+            <div class="timeline-cards-img">
+              <img
+                src="/images/me/club-two.jpg"
+                alt="maged abdulaziz walking"
+                loading="lazy"
+              />
+            </div>
+            <div class="timeline-cards-img">
+              <img
+                src="/images/me/back-pull.jpg"
+                alt="maged abdulaziz back"
+                loading="lazy"
+              />
+            </div>
+            <div class="timeline-cards-img">
+              <img
+                src="/images/me/bike-two.jpg"
+                alt="maged abdulaziz bike"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </section>
+
+        <div class="video-overlay" aria-hidden="true" inert>
+          <div class="video-overlay-backdrop"></div>
+          <div class="video-overlay-content" role="dialog" aria-modal="true">
+            <button class="video-close" type="button" aria-label="Close video">
+              ✕
+            </button>
+            <iframe
+              class="video-overlay-player"
+              src=""
+              data-src="https://player.vimeo.com/video/1151093846?autoplay=1&amp;muted=0&amp;loop=0&amp;controls=1&amp;autopause=0&amp;title=0&amp;byline=0&amp;portrait=0"
+              frameborder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="about-vid"
+            ></iframe>
+          </div>
+        </div>
+
+        <footer class="footer-section">
+          <div class="footer-top">
+            <div class="footer-col">
+              <h3>Contact</h3>
+              <p>
+                <a href="mailto:maged.abdulaziz9@gmail.com"
+                  >maged.abdulaziz9@gmail.com</a
+                >
+              </p>
+              <p><a href="tel:+01113743883">+0111 374 3883</a></p>
+            </div>
+
+            <div class="footer-col center-col">
+              <h3>Got a project? Want to collaborate?</h3>
+              <div class="tag-box">
+                <a href="/pages/contact-us.html" class="tag"
+                  >Discuss your project &rarr;</a
+                >
+              </div>
+            </div>
+
+            <div class="footer-col">
+              <h3>Egypt</h3>
+              <p>6 October, Giza</p>
+            </div>
+          </div>
+
+          <div class="footer-mid">
+            <p>© 2025 Maged Abdulaziz. All rights reserved.</p>
+            <div class="footer-links">
+              <a href="#">About</a>
+              <a href="#">Projects</a>
+              <a href="#">Contact</a>
+            </div>
+            <div class="socials">
+              <a href="#">Be</a>
+              <a href="#">🤍</a>
+              <a href="#">in</a>
+              <a href="#">🤍</a>
+              <a href="#">in</a>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <h1 class="footer-big-text">LET’S WORK TOGETHER</h1>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <!-- Core GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+
+    <!-- ScrollTrigger plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>
