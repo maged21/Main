@@ -140,7 +140,6 @@ img {
   opacity: 0.7;
 }
 
-
 .preloader-skull {
   position: absolute;
   inset: 0;
@@ -170,7 +169,6 @@ img {
   z-index: 3;
   pointer-events: none;
 }
-
 
 /* left two */
 .col-90 {
@@ -434,7 +432,6 @@ body.menu-open .menu-overlay-content {
   will-change: transform;
 }
 
-
 .container {
   position: relative;
   /* transform: translateY(0svh); */
@@ -525,13 +522,15 @@ section {
   inset: 0;
   width: 200%;
   height: 100%;
-  background: linear-gradient(to right,
-      #fff,
-      #7f42a7,
-      #6600c5,
-      #5300a0,
-      #a7a7a7,
-      #e7e7e7);
+  background: linear-gradient(
+    to right,
+    #fff,
+    #7f42a7,
+    #6600c5,
+    #5300a0,
+    #a7a7a7,
+    #e7e7e7
+  );
   transform: translateX(-50%);
   animation: tagGradient 2.5s linear infinite;
   will-change: transform;
@@ -707,8 +706,6 @@ section {
   opacity: 1;
 }
 
-
-
 /* spotlight section */
 .spotlight-pin {
   width: 100%;
@@ -824,7 +821,6 @@ section {
 .spotlight-outro-header {
   z-index: 2;
 }
-
 
 .pin-card {
   position: relative;
@@ -1032,9 +1028,10 @@ html.lenis body {
   display: grid;
   place-items: center;
   padding: 4px;
-  background:
-    conic-gradient(rgba(172, 128, 255, 0.9) var(--scroll-progress, 0%),
-      rgba(255, 255, 255, 0.08) 0%);
+  background: conic-gradient(
+    rgba(172, 128, 255, 0.9) var(--scroll-progress, 0%),
+    rgba(255, 255, 255, 0.08) 0%
+  );
   box-shadow: 0 0 0 rgba(172, 128, 255, 0);
   transition: box-shadow 0.3s ease, opacity 0.3s ease;
   opacity: 0.7;
@@ -1089,11 +1086,22 @@ html.lenis body {
   position: absolute;
   inset: -24px;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.9), transparent 35%),
-    radial-gradient(circle at 80% 20%, rgba(172, 128, 255, 0.9), transparent 35%),
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 255, 255, 0.9),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(172, 128, 255, 0.9),
+      transparent 35%
+    ),
     radial-gradient(circle at 75% 80%, rgba(255, 180, 80, 0.9), transparent 35%),
-    radial-gradient(circle at 25% 70%, rgba(120, 255, 200, 0.9), transparent 35%);
+    radial-gradient(
+      circle at 25% 70%,
+      rgba(120, 255, 200, 0.9),
+      transparent 35%
+    );
   filter: blur(6px);
   opacity: 0;
   transform: scale(0.7);
@@ -1180,7 +1188,7 @@ html.lenis body {
 
 /* projects section */
 .projects-section {
-  padding: 120px 8%;
+  padding: 20px 8%;
 }
 
 .work {
@@ -1253,7 +1261,7 @@ html.lenis body {
   padding: 15px 20px;
 }
 
-.item-copy>div {
+.item-copy > div {
   flex: 1;
   display: flex;
   align-items: center;
@@ -1284,26 +1292,30 @@ html.lenis body {
 
 #item-1 .shape,
 #item-3 .shape {
-  clip-path: polygon(0% 0px,
-      0px 0%,
-      calc(100% - 50px) 0px,
-      100% 50px,
-      100% 100%,
-      calc(100% - 0px) 100%,
-      50px 100%,
-      0px calc(100% - 50px));
+  clip-path: polygon(
+    0% 0px,
+    0px 0%,
+    calc(100% - 50px) 0px,
+    100% 50px,
+    100% 100%,
+    calc(100% - 0px) 100%,
+    50px 100%,
+    0px calc(100% - 50px)
+  );
 }
 
 #item-2 .shape,
 #item-4 .shape {
-  clip-path: polygon(50px 0px,
-      0px 50px,
-      0px 100%,
-      calc(100% - 50px) 100%,
-      100% calc(100% - 50px),
-      100% 100%,
-      100% 0%,
-      0px 0%);
+  clip-path: polygon(
+    50px 0px,
+    0px 50px,
+    0px 100%,
+    calc(100% - 50px) 100%,
+    100% calc(100% - 50px),
+    100% 100%,
+    100% 0%,
+    0px 0%
+  );
 }
 
 .shape {
@@ -1336,7 +1348,6 @@ html.lenis body {
   opacity: 1;
   transform: scale(1);
 }
-
 
 /* faq section */
 .faq-section {
@@ -1530,6 +1541,7 @@ html.lenis body {
   background-color: rgba(140, 82, 255, 0.18);
   border: 2px solid rgba(172, 128, 255, 0.8);
   border-radius: 2rem;
+  margin-bottom: 3rem;
 }
 
 .scroll-down .mouse span {
@@ -1680,7 +1692,6 @@ html.lenis body {
   pointer-events: none;
   border: 0;
 }
-
 
 .video-overlay {
   position: fixed;
@@ -1940,8 +1951,6 @@ html.lenis body {
   padding-bottom: 2px;
 }
 
-
-
 /* tools section */
 .tools-section {
   position: relative;
@@ -2034,23 +2043,20 @@ html.lenis body {
   overflow: hidden;
 }
 
-
-
 .process-section {
   position: relative;
   height: auto !important;
-  background: radial-gradient(1000px 500px at 100% 90%,
-      rgba(184, 99, 241, 0.45),
-      transparent 85%);
+  background: radial-gradient(
+    1000px 500px at 100% 90%,
+    rgba(184, 99, 241, 0.45),
+    transparent 85%
+  );
   overflow: visible;
   padding: 120px 8%;
   color: #fff;
   margin-top: 50px;
   border-radius: 45px;
 }
-
-
-
 
 .section-title {
   text-align: left;
@@ -2151,26 +2157,30 @@ body.menu-open #gallery canvas {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background: radial-gradient(ellipse at center,
-      transparent 50%,
-      rgba(0, 0, 0, 0.1) 70%,
-      rgba(0, 0, 0, 0.75) 90%,
-      rgba(0, 0, 0, 1) 100%);
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.1) 70%,
+    rgba(0, 0, 0, 0.75) 90%,
+    rgba(0, 0, 0, 1) 100%
+  );
 }
 
 /* contact us page */
 
-.contact-info-intro>*,
-.contact-info-content>*,
+.contact-info-intro > *,
+.contact-info-content > *,
 .feature-list li,
-.contact-form>* {
+.contact-form > * {
   opacity: 0;
 }
 
 .contact-page {
-  background: radial-gradient(1000px 500px at 100% 90%,
+  background: radial-gradient(
+      1000px 500px at 100% 90%,
       rgba(184, 99, 241, 0.45),
-      transparent 85%),
+      transparent 85%
+    ),
     linear-gradient(to bottom, #0a0a14 0%, #050509 50%, #000 100%);
 }
 
@@ -2278,7 +2288,6 @@ body.menu-open #gallery canvas {
   opacity: 0;
   transform: translateY(40px);
 }
-
 
 .form-group {
   margin-bottom: 20px;
@@ -2495,8 +2504,6 @@ body.menu-open #gallery canvas {
   opacity: 0.9;
 }
 
-
-
 /* footer section */
 .footer-section {
   width: 100%;
@@ -2649,7 +2656,6 @@ body.menu-open #gallery canvas {
     top: -20%;
     right: 2%;
   }
-
 }
 
 @media (max-width: 800px) {
@@ -2729,10 +2735,10 @@ body.menu-open #gallery canvas {
     margin-top: 5rem;
   }
 
-  .scroll-down, .hero-copy {
+  .scroll-down,
+  .hero-copy {
     display: none;
   }
-
 
   .about-page .video-section {
     height: auto;
@@ -2797,14 +2803,13 @@ body.menu-open #gallery canvas {
    992px (tablets landscape)
 ================================ */
 @media (max-width: 992px) {
-
-  .hero {
-    justify-content: flex-end;
-    gap: 2em;
+  .hero-content {
+    margin-left: 0%;
+    margin-top: 10%;
   }
 
-  .hero h1 {
-    font-size: 19vw;
+  .hero-content h1 {
+    font-size: 4.5rem;
   }
 
   .video-container-desktop {
@@ -2817,7 +2822,7 @@ body.menu-open #gallery canvas {
     gap: 1em;
   }
 
-    .exp-item {
+  .exp-item {
     flex-direction: column;
   }
 
@@ -2830,12 +2835,65 @@ body.menu-open #gallery canvas {
     font-size: 38px;
   }
 
-    .tools-section {
+  .tools-section {
     height: 100%;
     min-height: 100svh;
     padding: 25vh 0;
   }
 
+  .service-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .animate-text {
+    font-size: 3rem;
+  }
+
+  .pin-card-inner {
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 20px;
+    justify-content: flex-start;
+  }
+  .pin-card-content {
+    width: 100%;
+  }
+  .pin-card p {
+    max-width: 100%;
+  }
+  .projects-section h1 {
+    font-size: 3rem;
+  }
+  .projects-section span {
+    font-size: 20px;
+  }
+
+  .faq-main-content{
+    flex-direction: column;
+    gap: 2rem;
+    padding: 20px 0;
+  }
+
+  .faq-left img, .faq-left h1 {
+    width: 100%;
+  }
+  .faq-left img {
+    height: 500px;
+  }
+  .section-title h1 {
+    font-size: 3rem;
+  }
+  
+  .robot-3d {
+    display: none;
+  }
+
+
+  .timeline-cards-header h1 {
+    text-align: center;
+  }
   .grid {
     height: max-content;
   }
@@ -2881,6 +2939,21 @@ body.menu-open #gallery canvas {
    768px (tablets/large phones)
 ================================ */
 @media (max-width: 768px) {
+  .preloader-streams {
+    flex-direction: column;
+    gap: 5rem;
+  }
+  #preloader .preloader-streams .code-col {
+    width: min(260px, 70vw);
+  }
+  .preloader-name {
+    bottom: 30px;
+    left: 30px;
+  }
+  .counter-track {
+    bottom: 20px;
+    right: 30px;
+  }
 
   .hero-section {
     padding: 0;
@@ -2893,11 +2966,14 @@ body.menu-open #gallery canvas {
   .robot-3d {
     display: none;
   }
+  .about-section, .service-head {
+    padding: 20px 6vw;
+  }
 
 
-.footer-col .tag-box {
-   margin-top: 20px;
-   margin: 0 auto;
+  .footer-col .tag-box {
+    margin-top: 20px;
+    margin: 0 auto;
   }
 
   .hero-content h1 {
@@ -2920,7 +2996,8 @@ body.menu-open #gallery canvas {
     font-size: 20px;
   }
 
-  .og p, .mask p {
+  .og p,
+  .mask p {
     font-size: 40px;
   }
   .arrow {
@@ -2928,7 +3005,8 @@ body.menu-open #gallery canvas {
     height: 45px;
   }
 
-  .spotlight-intro-header h1, .spotlight-outro-header h1 {
+  .spotlight-intro-header h1,
+  .spotlight-outro-header h1 {
     font-size: 2.5rem;
   }
 
@@ -2950,7 +3028,7 @@ body.menu-open #gallery canvas {
     max-width: 100%;
   }
 
-    .spotlight-pin {
+  .spotlight-pin {
     height: 100svh;
     min-height: 100vh;
   }
@@ -2963,12 +3041,6 @@ body.menu-open #gallery canvas {
 
   .spotlight-cover-img video {
     object-fit: contain;
-  }
-
-  .service-head {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
   }
 
   .service-content h2 {
@@ -2998,15 +3070,15 @@ body.menu-open #gallery canvas {
     width: 100%;
   }
 
-.services-header img {
-  border-radius: 0;
-}
+  .services-header img {
+    border-radius: 0;
+  }
 
-.exp-center {
-  width: 70%;
-}
+  .exp-center {
+    width: 70%;
+  }
 
-   .projects-section {
+  .projects-section {
     padding: 1.5rem;
   }
   .section-title {
@@ -3024,7 +3096,6 @@ body.menu-open #gallery canvas {
   .work .row {
     grid-template-columns: repeat(1, 1fr);
   }
- 
 
   /* Hide entire left panel */
   .faq-left {
