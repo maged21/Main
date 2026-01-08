@@ -1246,7 +1246,7 @@ html.lenis body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(0) sepia(0) brightness(1);
+  filter: grayscale(0) blur(0) brightness(1);
   transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   border-radius: 20px !important;
 }
@@ -1340,13 +1340,19 @@ html.lenis body {
 
 .item:hover img {
   transform: scale(1.5);
-  filter: grayscale(0.5) sepia(0.75) brightness(0.75);
+  filter: grayscale(0.5) blur(0.5rem) brightness(0.75);
   border-radius: 20px !important;
 }
 
 .item:hover .shape {
   opacity: 1;
   transform: scale(1);
+}
+
+.item .shape span, .shape #number {
+  font-size: 22px;
+  text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
 }
 
 /* faq section */
@@ -1658,6 +1664,17 @@ html.lenis body {
   transition: opacity 0.25s ease, transform 0.25s ease;
   z-index: 2;
   pointer-events: none;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .video-preview {
+    cursor: default;
+  }
+
+  .video-trigger {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 .video-preview.is-hovered .video-trigger,
@@ -3063,6 +3080,10 @@ body.menu-open #gallery canvas {
   }
   .pin-card p {
     max-width: 100%;
+  }
+
+  .item-copy {
+    display: none;
   }
 
   .animate-text {

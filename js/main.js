@@ -7,6 +7,37 @@ if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
 }
 
+if (sessionStorage.getItem("forceTopOnReload") === "1") {
+  sessionStorage.removeItem("forceTopOnReload");
+  requestAnimationFrame(() => {
+    window.scrollTo(0, 0);
+  });
+}
+
+const getSizeBucket = () => {
+  const width = window.innerWidth;
+  if (width < 768) return "xs";
+  if (width < 1000) return "sm";
+  if (width < 1200) return "md";
+  return "lg";
+};
+
+let sizeBucket = getSizeBucket();
+let resizeReloadTimer = null;
+window.addEventListener("resize", () => {
+  if (resizeReloadTimer) {
+    clearTimeout(resizeReloadTimer);
+  }
+  resizeReloadTimer = setTimeout(() => {
+    const nextBucket = getSizeBucket();
+    if (nextBucket !== sizeBucket) {
+      sizeBucket = nextBucket;
+      sessionStorage.setItem("forceTopOnReload", "1");
+      location.reload();
+    }
+  }, 250);
+});
+
 async function initPage() {
   window.__fluidGlobal = true;
   let animationCleanup = null;

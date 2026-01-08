@@ -22,6 +22,9 @@ export default function initHome() {
   };
 
   const run = () => {
+    let pageActive = true;
+    const cleanupFns = [];
+    const addCleanup = (fn) => cleanupFns.push(fn);
     const config = {
       symbols: ["O", "X", "*", ">", "$", "W"],
       blockSize: 25,
@@ -144,6 +147,7 @@ export default function initHome() {
       });
 
       const updateHighlights = () => {
+        if (!pageActive) return;
         const currentTime = Date.now();
 
         blocks.forEach((block) => {
@@ -361,6 +365,14 @@ export default function initHome() {
     const prevCleanup = window.__pageCleanup;
     window.__pageCleanup = () => {
       if (typeof prevCleanup === "function") prevCleanup();
+      pageActive = false;
+      cleanupFns.forEach((fn) => {
+        try {
+          fn();
+        } catch (err) {
+          console.warn("cleanup failed", err);
+        }
+      });
       if (preloaderIntervalId) {
         clearInterval(preloaderIntervalId);
         preloaderIntervalId = null;
@@ -483,14 +495,17 @@ export default function initHome() {
 
     coverSpotlightEmbed();
     window.addEventListener("resize", coverSpotlightEmbed);
+    addCleanup(() => window.removeEventListener("resize", coverSpotlightEmbed));
 
     closeBtn?.addEventListener("click", () => closeOverlay());
     backdrop?.addEventListener("click", () => closeOverlay());
-    document.addEventListener("keydown", (e) => {
+    const onOverlayKeydown = (e) => {
       if (e.key === "Escape") {
         closeOverlay();
       }
-    });
+    };
+    document.addEventListener("keydown", onOverlayKeydown);
+    addCleanup(() => document.removeEventListener("keydown", onOverlayKeydown));
 
     /* -------------------------
    COUNTER FIX (VISIBLE NOW)
@@ -736,14 +751,16 @@ export default function initHome() {
     let spotlightResizeRaf = 0;
 
     initSpotlightAnimations();
-    window.addEventListener("resize", () => {
+    const onSpotlightResize = () => {
       if (spotlightResizeRaf) {
         cancelAnimationFrame(spotlightResizeRaf);
       }
       spotlightResizeRaf = requestAnimationFrame(() => {
         initSpotlightAnimations();
       });
-    });
+    };
+    window.addEventListener("resize", onSpotlightResize);
+    addCleanup(() => window.removeEventListener("resize", onSpotlightResize));
 
     function initSpotlightAnimations() {
       if (spotlightState.trigger) {
@@ -759,10 +776,12 @@ export default function initHome() {
         spotlightState.outroSplit = null;
       }
 
-      const maxImages = 12;
-      const images = Array.from(
+      const isMobile = window.innerWidth < 1000;
+      const maxImages = isMobile ? 6 : 12;
+      const allImages = Array.from(
         document.querySelectorAll(".spotlight-images .img")
-      ).slice(0, maxImages);
+      );
+      const images = allImages.slice(0, maxImages);
       const coverImg = document.querySelector(".spotlight-cover-img");
       const introHeader = document.querySelector(".spotlight-intro-header h1");
       const outroHeader = document.querySelector(".spotlight-outro-header h1");
@@ -770,6 +789,10 @@ export default function initHome() {
       if (!images.length || !coverImg || !introHeader || !outroHeader) {
         return;
       }
+
+      allImages.slice(maxImages).forEach((img) => {
+        gsap.set(img, { opacity: 0, scale: 0, x: 0, y: 0, z: -1000 });
+      });
 
       spotlightState.introSplit = SplitText.create(introHeader, {
         type: "words",
@@ -807,8 +830,7 @@ export default function initHome() {
 
       const screenWidth = window.innerWidth;
       const screenHeight = window.innerHeight;
-      const isMobile = window.innerWidth < 1000;
-      const scatterMultiplier = isMobile ? 2.5 : 0.5;
+      const scatterMultiplier = isMobile ? 1.4 : 0.5;
 
       const startPositions = Array.from(images).map(() => ({
         x: 0,
@@ -828,7 +850,7 @@ export default function initHome() {
       });
 
       images.forEach((img, index) => {
-        gsap.set(img, startPositions[index]);
+        gsap.set(img, { ...startPositions[index], opacity: 1 });
       });
 
       gsap.set(coverImg, {
@@ -846,7 +868,7 @@ export default function initHome() {
       const outroRevealEnd = Math.min(0.95, outroRevealStart + 0.2);
       const coverStart = Math.max(0.35, imagePhaseEnd - 0.05);
       const coverDuration = 0.25;
-      const pinDuration = "350%";
+      const pinDuration = isMobile ? "200%" : "350%";
 
       spotlightState.trigger = ScrollTrigger.create({
         id: "spotlight-pin",
@@ -855,6 +877,7 @@ export default function initHome() {
         start: "top top",
         end: `+=${pinDuration}`,
         scrub: 1,
+        invalidateOnRefresh: true,
         onUpdate: (self) => {
           const progress = self.progress;
           const scaleMultiplier = isMobile ? 4 : 2;
@@ -972,6 +995,7 @@ export default function initHome() {
           }
         },
       });
+      ScrollTrigger.refresh();
     }
 
     /* -------------------------------------------------------------
@@ -1030,31 +1054,29 @@ export default function initHome() {
 
     gsap.set(".marquee__inner", { xPercent: -50 });
 
-    window.addEventListener(
-      "scroll",
-      function () {
-        if (window.pageYOffset > currentScroll) {
-          isScrollingDown = true;
+    const onMarqueeScroll = () => {
+      if (window.pageYOffset > currentScroll) {
+        isScrollingDown = true;
+      } else {
+        isScrollingDown = false;
+      }
+
+      gsap.to(tween, {
+        timeScale: isScrollingDown ? 1 : -1,
+      });
+
+      arrows.forEach((arrow) => {
+        if (isScrollingDown) {
+          arrow.classList.remove("active");
         } else {
-          isScrollingDown = false;
+          arrow.classList.add("active");
         }
+      });
 
-        gsap.to(tween, {
-          timeScale: isScrollingDown ? 1 : -1,
-        });
-
-        arrows.forEach((arrow) => {
-          if (isScrollingDown) {
-            arrow.classList.remove("active");
-          } else {
-            arrow.classList.add("active");
-          }
-        });
-
-        currentScroll = window.pageYOffset;
-      },
-      { passive: true }
-    );
+      currentScroll = window.pageYOffset;
+    };
+    window.addEventListener("scroll", onMarqueeScroll, { passive: true });
+    addCleanup(() => window.removeEventListener("scroll", onMarqueeScroll));
 
     // TEXT REVEAL
     gsap.from(".about-badge, .about-title, .about-desc", {
@@ -1123,7 +1145,7 @@ export default function initHome() {
       });
     });
 
-    document.addEventListener("mousemove", (e) => {
+    const onRevealMouseMove = (e) => {
       revealSections.forEach((item) => {
         if (!item.section.revealReady) return; // stop before reveal done
 
@@ -1147,7 +1169,9 @@ export default function initHome() {
           ease: "back.out(1.6)",
         });
       });
-    });
+    };
+    document.addEventListener("mousemove", onRevealMouseMove);
+    addCleanup(() => document.removeEventListener("mousemove", onRevealMouseMove));
 
     // sand revealing
     function applySandReveal(selector) {
@@ -1201,25 +1225,27 @@ export default function initHome() {
     // ===============================
     const firstCard = document.querySelector(".pin-card");
 
-    gsap.set(firstCard, {
-      opacity: 0,
-      y: 60,
-      filter: "blur(18px)",
-    });
+    if (firstCard) {
+      gsap.set(firstCard, {
+        opacity: 0,
+        y: 60,
+        filter: "blur(18px)",
+      });
 
-    gsap.to(firstCard, {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      duration: 1.8,
-      delay: 0.8,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: firstCard,
-        start: "top 80%",
-        toggleActions: "play none none none",
-      },
-    });
+      gsap.to(firstCard, {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+      duration: 1.2,
+      delay: 0.3,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: firstCard,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+    }
 
     const pinCards = gsap.utils.toArray(".pin-card");
 
@@ -1232,12 +1258,14 @@ export default function initHome() {
           end: "top top",
           pin: true,
           pinSpacing: false,
+          invalidateOnRefresh: true,
         });
 
         ScrollTrigger.create({
           trigger: pinCards[index + 1],
           start: "top bottom",
           end: "top top",
+          invalidateOnRefresh: true,
           onUpdate: (self) => {
             const progress = self.progress;
             gsap.set(eachCard, {
@@ -1515,16 +1543,35 @@ export default function initHome() {
       };
 
       update();
-      window.addEventListener("scroll", () => {
+      const onProgressScroll = () => {
         if (!ticking) {
           ticking = true;
           requestAnimationFrame(update);
         }
-      }, { passive: true });
-      window.addEventListener("resize", update);
+      };
+      const onProgressResize = () => update();
+      window.addEventListener("scroll", onProgressScroll, { passive: true });
+      window.addEventListener("resize", onProgressResize);
+      addCleanup(() => {
+        window.removeEventListener("scroll", onProgressScroll);
+        window.removeEventListener("resize", onProgressResize);
+      });
     };
 
     initScrollProgress();
+
+    let refreshRaf = 0;
+    const onGlobalResize = () => {
+      if (!window.ScrollTrigger) return;
+      if (refreshRaf) {
+        cancelAnimationFrame(refreshRaf);
+      }
+      refreshRaf = requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+      });
+    };
+    window.addEventListener("resize", onGlobalResize);
+    addCleanup(() => window.removeEventListener("resize", onGlobalResize));
   };
 
   if (document.readyState === "loading") {
