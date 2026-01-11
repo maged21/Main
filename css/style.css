@@ -2706,10 +2706,7 @@ body.menu-open #gallery canvas {
     font-size: 1.25rem;
   }
 
-  nav,
-  section {
-    padding: 1.5em;
-  }
+  
 
   .hero h1 {
     font-size: 2rem;
@@ -2866,6 +2863,9 @@ body.menu-open #gallery canvas {
 
   .animate-text {
     font-size: 3rem;
+  }
+  .pin-card {
+    padding: 3vh 5vw !important;
   }
 
   .pin-card-inner {
@@ -3065,7 +3065,7 @@ body.menu-open #gallery canvas {
   }
 
   .pin-card {
-    padding: 10vh 0vw !important;
+    padding: 2vh 0vw !important;
     width: auto;
   }
 

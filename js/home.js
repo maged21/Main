@@ -740,7 +740,7 @@ export default function initHome() {
   ------------------------------------------------------------- */
 
     /* -------------------------------------------------------------
-   ABOUT SECTION — IMAGE ONLY
+   ABOUT SECTION â€” IMAGE ONLY
   ------------------------------------------------------------- */
 
     let spotlightState = {
@@ -999,7 +999,7 @@ export default function initHome() {
     }
 
     /* -------------------------------------------------------------
-   UNIVERSAL REVEAL TITLE ANIMATION — WORKS ANYWHERE
+   UNIVERSAL REVEAL TITLE ANIMATION â€” WORKS ANYWHERE
 ------------------------------------------------------------- */
 
     function animateRevealTitle(selector) {
@@ -1221,73 +1221,93 @@ export default function initHome() {
     });
 
     // ===============================
-    // 1️⃣ FIRST CARD FADE-IN (NEW)
+    // 1ï¸âƒ£ FIRST CARD FADE-IN (NEW)
     // ===============================
-    const firstCard = document.querySelector(".pin-card");
-
-    if (firstCard) {
-      gsap.set(firstCard, {
-        opacity: 0,
-        y: 60,
-        filter: "blur(18px)",
-      });
-
-      gsap.to(firstCard, {
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-      duration: 1.2,
-      delay: 0.3,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: firstCard,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      });
-    }
-
     const pinCards = gsap.utils.toArray(".pin-card");
+    const firstCard = pinCards[0];
 
-    pinCards.forEach((eachCard, index) => {
-      if (index < pinCards.length - 1) {
-        ScrollTrigger.create({
-          trigger: eachCard,
-          start: "top top",
-          endTrigger: pinCards[pinCards.length - 1],
-          end: "top top",
-          pin: true,
-          pinSpacing: false,
-          invalidateOnRefresh: true,
+    ScrollTrigger.matchMedia({
+      "(min-width: 1025px)": () => {
+        const serviceTriggers = [];
+
+        if (firstCard) {
+          gsap.set(firstCard, {
+            opacity: 0,
+            y: 60,
+            filter: "blur(18px)",
+          });
+
+          const firstTween = gsap.to(firstCard, {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 1.2,
+            delay: 0.3,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: firstCard,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          });
+          serviceTriggers.push(firstTween.scrollTrigger);
+        }
+
+        pinCards.forEach((eachCard, index) => {
+          if (index < pinCards.length - 1) {
+            const pinTrigger = ScrollTrigger.create({
+              trigger: eachCard,
+              start: "top top",
+              endTrigger: pinCards[pinCards.length - 1],
+              end: "top top",
+              pin: true,
+              pinSpacing: false,
+              invalidateOnRefresh: true,
+            });
+
+            const animateTrigger = ScrollTrigger.create({
+              trigger: pinCards[index + 1],
+              start: "top bottom",
+              end: "top top",
+              invalidateOnRefresh: true,
+              onUpdate: (self) => {
+                const progress = self.progress;
+                gsap.set(eachCard, {
+                  scale: 1 - progress * 0.25,
+                  rotation: index % 2 === 0 ? progress * 5 : -progress * 5,
+                  rotationX: index % 2 === 0 ? progress * 40 : -progress * 40,
+                });
+                gsap.set(eachCard.querySelector(".overlay"), {
+                  opacity: progress * 0.4,
+                });
+              },
+            });
+
+            serviceTriggers.push(pinTrigger, animateTrigger);
+          }
         });
 
-        ScrollTrigger.create({
-          trigger: pinCards[index + 1],
-          start: "top bottom",
-          end: "top top",
-          invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            gsap.set(eachCard, {
-              scale: 1 - progress * 0.25,
-              rotation: index % 2 === 0 ? progress * 5 : -progress * 5,
-              rotationX: index % 2 === 0 ? progress * 40 : -progress * 40,
-            });
-            gsap.set(eachCard.querySelector(".overlay"), {
-              opacity: progress * 0.4,
-            });
-          },
+        return () => {
+          serviceTriggers.forEach((trigger) => trigger?.kill());
+        };
+      },
+      "(max-width: 1024px)": () => {
+        pinCards.forEach((card) => {
+          gsap.set(card, { clearProps: "transform,opacity,filter" });
+          const overlay = card.querySelector(".overlay");
+          if (overlay) {
+            gsap.set(overlay, { clearProps: "opacity" });
+          }
         });
-      }
+      },
     });
-
     // const services = document.querySelectorAll(".service-box");
     // const hoverLayer = document.getElementById("service-hover-layer");
 
     // services.forEach((box) => {
     //   const wrapper = box.querySelector(".hover-img-wrapper");
 
-    //   // Move wrapper out of the box → into global layer
+    //   // Move wrapper out of the box â†’ into global layer
     //   hoverLayer.appendChild(wrapper);
 
     //   box.addEventListener("mouseenter", () => {
